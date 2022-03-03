@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dual screen css experiments</title>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+
+      /* maximum width of our customers phones is 420px */
+      /* spanning: none is optional in this case */
+      @media (max-width: 420px) {
+        body {
+          background-color: yellow;
+        }
+      }
+
+      /* Separating media features with comma `,` is equivalent to the logical operation OR  */
+      @media (horizontal-viewport-segments: 2),
+        (vertical-viewport-segments: 2) {
+        body {
+          background-color: green;
+        }
+      }
+    </style>
+  </head>
+  <body>
+      <h1>Hello world</h1>
+  </body>
+</html>

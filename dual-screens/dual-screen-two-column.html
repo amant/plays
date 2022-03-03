@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dual screen css experiments</title>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+
+      .row {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .column-left {
+        display: flex;
+        flex-basis: 100%;
+      }
+
+      .column-right {
+        display: flex;
+        flex-basis: 100%;
+      }
+
+      .blue-box {
+        background-color: blue;
+        height: 300px;
+        color: white;
+        width: 100%;
+      }
+
+      .green-box {
+        height: 300px;
+        background-color: green;
+        color: white;
+        width: 100%;
+      }
+
+      @media (max-width: 420px) {
+        body {
+          background-color: lightyellow;
+        }
+        .row {
+          flex-direction: column;
+        }
+      }
+
+      @media (horizontal-viewport-segments: 2) {
+        body {
+          background-color: lightgreen;
+        }
+
+        .row {
+          gap: 0px;
+        }
+
+        .column-left {
+          flex: 0 0 env(viewport-segment-right 0 0);
+          margin-inline-end: calc(
+            env(viewport-segment-left 1 0) - env(viewport-segment-right 0 0)
+          );
+        }
+
+        .blue-box {
+          width: calc(env(viewport-segment-width 0 0) - 20px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Two Columns example</h1>
+
+    <div class="row">
+      <div class="column-left">
+        <div class="blue-box">Some Text in Column One</div>
+      </div>
+      <div class="column-right">
+        <div class="green-box">Some Text in Column Two</div>
+      </div>
+    </div>
+  </body>
+</html>
